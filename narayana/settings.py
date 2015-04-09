@@ -32,7 +32,7 @@ TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = ['*']
 
 ADMINS = (
-    ('Fedorov Igor', 'ifedor@ymail.ru'),
+    ('Fedorov Igor', 'ifedor@ymail.com'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -65,7 +65,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'djangocms_admin_style',
-    #'djangocms_text_ckeditor',
+    'djangocms_text_ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'menus',
     'south',
     'sekizai',
+    'easy_thumbnails',
 
 )
 
@@ -96,6 +97,10 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware'
 )
+
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}
 
 ROOT_URLCONF = 'narayana.urls'
 
