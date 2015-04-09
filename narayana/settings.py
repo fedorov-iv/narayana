@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 """
-Django settings for narayana1 project.
+Django settings for narayana project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -10,6 +11,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+# gettext = lambda s: s
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -41,9 +44,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.csrf',
     'django.core.context_processors.tz',
-    # 'cms.context_processors.cms_settings',
-    #'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
+    'sekizai.context_processors.sekizai',
     'django.core.context_processors.static'
+)
+
+SITE_ID = 1
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader'
 )
 
 TEMPLATE_DIRS = (
@@ -53,21 +64,37 @@ TEMPLATE_DIRS = (
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    'djangocms_admin_style',
+    #'djangocms_text_ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
+    'django.contrib.messages',
+    'cms',
+    'mptt',
+    'menus',
+    'south',
+    'sekizai',
+
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware'
 )
 
 ROOT_URLCONF = 'narayana.urls'
@@ -77,6 +104,45 @@ WSGI_APPLICATION = 'narayana.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+
+LANGUAGES = (
+    # # Customize this
+    ('ru', u'Русский'),
+
+)
+
+CMS_LANGUAGES = {
+    # # Customize this
+    'default': {
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+        'public': True,
+    },
+    1: [
+        {
+            'redirect_on_fallback': True,
+            'code': 'ru',
+            'hide_untranslated': False,
+            'name': u'Русский',
+            'public': True,
+        },
+
+    ],
+}
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+CMS_TEMPLATES = (
+    # # Customize this
+    ('page.html', 'Main Page'),
+    ('inner.html', 'Inner Page')
+)
+
+CMS_PERMISSION = False
+
+CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default':
@@ -93,7 +159,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
