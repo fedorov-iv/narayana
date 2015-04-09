@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+{% block content-wrapper %}
+    <div class="page-submenu">
+        <div class="wrap">
+            {% render_model_block request.current_page "changelist" %}
+                {% show_menu 1 1 0 100 "menu_inner.html" %}
+            {% endrender_model_block %}
+        </div>
+    </div>
+    {% block content %}{% placeholder "content" %}{% endblock content %}
+{% endblock content-wrapper %}

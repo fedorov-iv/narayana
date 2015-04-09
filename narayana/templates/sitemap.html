@@ -1,0 +1,11 @@
+{% load i18n menu_tags cache %}
+
+{% for child in children %}
+    <ul class="{% if child.menu_level > 0 %}map__sub{% else %}map__top{% endif %}">
+        <li class="{% if child.menu_level == 0 %}map__toplink{% endif %}">
+            <a href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></li>
+        {% if child.children %}
+            {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+        {% endif %}
+    </ul>
+{% endfor %}
