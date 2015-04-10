@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'ifcropper',
     'news',
     'feedback',
+    'imagegallery',
 )
 
 MIDDLEWARE_CLASSES = (
