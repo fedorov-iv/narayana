@@ -1,0 +1,70 @@
+{% extends "inner.html" %}
+{% load i18n %}
+{% block content %}
+<div id="feedback">
+      <div class="block">
+        <h1>{% trans "Feedback" %}</h1>
+            <form class="feedback" action="." method="post">
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+             <div class="feedback__row {% if form.subject.errors %}has-error{% endif %}">
+                <div class="feedback__label _subject-opener">
+                 <label for="id_subject">{% trans "Subject:" %}</label>
+                </div>
+                <div class="feedback__input">
+                    {{ form.subject}}
+                </div>
+             </div>
+            {{ form.subject.errors }}
+
+            <div class="feedback__row{% if form.user_name.errors %}has-error{% endif %}">
+                 <div class="feedback__label">
+                    <label for="id_user_name">{% trans "Name:" %}</label>
+                 </div>
+                    <div class="feedback__input">
+                    {{ form.user_name}}
+                </div>
+            </div>
+            {{ form.user_name.errors }}
+
+                <div class="feedback__row {% if form.email.errors %}has-error{% endif %}">
+                   <div class="feedback__label"> <label for="id_email">{% trans "E-mail:" %}</label></div>
+                    <div class="feedback__input">{{ form.email }}</div>
+                </div>
+            {{ form.email.errors }}
+
+
+            <div class="feedback__row {% if form.body.errors %}has-error{% endif %}">
+               <div class="feedback__label"> <label for="id_body">{% trans "Message:" %}</label></div>
+                <div class="feedback__input">{{ form.body }}</div>
+            </div>
+            {{ form.body.errors }}
+
+             <div class="feedback__row {% if form.captcha.errors %}has-error{% endif %}">
+               <div class="feedback__label"> <label for="id_captcha">{% trans "Input code:" %}</label></div>
+                <div class="feedback__input">
+                    {{ form.captcha }}
+                    {{ form.captcha.errors }}
+                <div class="feedback__reply">
+                    <div class="checkbox__reply"></div>{% trans "Need feedback" %}
+                </div>
+                    <div class="feedback__send">
+                        {% csrf_token %}
+                        <a href="javascript:void(0)" onclick="this.form.submit()" class="btn">{% trans "Send" %}</a>
+                    </div>
+                </div>
+            </div>
+          <input type="hidden" name="is_answer_needed" value="false" id="reply">
+        </form>
+      </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

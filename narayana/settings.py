@@ -9,15 +9,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from settings_local import DEBUG
 
 # gettext = lambda s: s
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-from settings_local import DEBUG
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -46,7 +45,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'cms.context_processors.cms_settings',
     'sekizai.context_processors.sekizai',
-    'django.core.context_processors.static'
+    'django.core.context_processors.static',
 )
 
 SITE_ID = 1
@@ -79,8 +78,14 @@ INSTALLED_APPS = (
     'menus',
     'south',
     'sekizai',
+    'tinymce',
+    'sorl.thumbnail',
+    'mce_filebrowser',
     'easy_thumbnails',
-
+    'captcha',
+    'ifcropper',
+    'news',
+    'feedback',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,8 +103,27 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.language.LanguageCookieMiddleware'
 )
 
+# ifcropper thumbnails
+from easy_thumbnails.conf import Settings as thumbnail_settings
+IMAGE_CROPPING_THUMB_SIZE = (300, 300)
+IMAGE_CROPPING_SIZE_WARNING = True
+THUMBNAIL_PROCESSORS = (
+    'ifcropper.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
 SOUTH_MIGRATION_MODULES = {
     'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}
+
+TINYMCE_DEFAULT_CONFIG = {
+    # 'file_browser_callback': "djangoFileBrowser",
+    'file_browser_callback': 'mce_filebrowser',
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'width': 850,
+    'height': 400,
 }
 
 ROOT_URLCONF = 'narayana.urls'

@@ -1,0 +1,19 @@
+{% extends "inner.html" %}
+{% load i18n cms_tags%}
+{% block content %}
+    <div id="news">
+        <div class="block">
+            <h1>{% trans "News" %}</h1>
+                <div class="newsfeed__item">
+                        <div class="newsitem__meta">
+                            {% if news.create_date %}
+                                <div class="newsitem__date">{{ news.create_date|date:"d.m.Y" }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="newsitem__header no-bg">{% render_model news "title" %}</div>
+                        <div class="newsitem__excerpt">{{ news.detail|safe  }}</div>
+                </div>
+                <a class="btn_back" href="{% url "news_list" %}">Назад к списку</a>
+            </div>
+    </div>
+{% endblock %}

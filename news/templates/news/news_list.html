@@ -1,0 +1,36 @@
+{% extends "inner.html" %}
+{% load i18n  cms_tags %}
+{% block content %}
+
+    <div id="news">
+        <div class="block">
+            <h1>{% trans "News" %}</h1>
+            <div class="newsfeed">
+                {% for news in curr_page_news %}
+                    <div class="newsfeed__item">
+                        <a href="{% url "news_detail" news.id %}" class="newsitem">
+                            <div class="newsitem__meta">
+                                {% if news.create_date %}
+                                    <div class="newsitem__date">{{ news.create_date|date:"d.m.Y" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="newsitem__header">{{ news.title}}</div>
+                            <div class="newsitem__excerpt">{{ news.announce|safe }}</div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="search__pages">
+                {# Список страниц #}
+                {% for page in pages %}
+                    {% if page == active_page %}
+                        <a class="search__page _active">{{ page }}</a>
+                    {% else %}
+                        <a class="search__page" href="{% page_url request.current_page %}page/{{ page }}/">{{ page }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
