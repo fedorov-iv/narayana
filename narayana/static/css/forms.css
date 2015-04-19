@@ -1,0 +1,157 @@
+fieldset {
+margin:10px 0;
+background-color:#e2f3c0;
+}
+
+legend {
+padding:5px;
+font-size: 140%;
+font-weight: bold;
+color: #cd0a0a;
+margin-left: 50px;
+}
+
+
+ul.forms, ul.feedback, ul.ins_icon {
+list-style: none;
+text-align: left;
+}
+
+li.forms, li.alignment, li.fiidback, li.ins_icon {
+margin-bottom: 5px;
+}
+
+ul.forms li.forms label, li.forms_tags label {
+float:left;
+width:250px;
+font-size: 100%;
+font-weight: bold;
+}
+
+ul.forms li.forms input, ul.forms li.forms select {
+width: 400px;
+}
+.ssil
+{
+font-size:8px;
+opacity: 0.0 !important;
+text-decoration: none;
+}
+.ssil a
+{
+font-size:8px;
+opacity: 0.0 !important;
+text-decoration: none;
+}
+.ssil a:visited
+{
+font-size:8px;
+opacity: 0.0 !important;
+text-decoration: none;
+}
+.ssil a:link
+{
+font-size:8px;
+opacity: 0.0 !important;
+text-decoration: none;
+}
+.ssil2 a:hover
+{
+font-size:8px;
+opacity: 0.0 !important;
+text-decoration: none;
+}
+li.forms_tags label {
+float:left;
+width:170px;
+font-size: 100%;
+font-weight: bold;
+}
+
+ul.forms_tags li.forms_tags input, ul.forms_tags li.forms_tags select {
+width: 150px;
+}
+
+ul.forms li.forms textarea {
+width: 695px;
+height:200px;
+}
+
+ul.forms li.forms input.checkbox-radio, li.alignment input.checkbox-radio {
+width: 15px;
+margin-right: 20px;
+}
+
+ul.forms li.alignment label {
+width: 100px;
+float:left;
+font-size: 100%;
+font-weight: bold;
+}
+
+li.alignment input {
+float:left;
+width: 20px;
+margin-right: 60px;
+}
+
+li.res_frm label {
+float:left;
+width: 70px;
+font-size: 100%;
+}
+
+li.res_frm input {
+float:left;
+width: 30px;
+margin-right: 60px;
+}
+
+input.form-button {
+font-size: 110%;
+font-weight: bold;
+margin-right: 20px;
+width: 200px;
+}
+
+.my_editor {
+padding-left: 260px;
+}
+
+ul.feedback li.feedback input {
+width: 300px;
+}
+
+ul.feedback li.feedback textarea {
+width: 300px;
+height:100px;
+}
+
+ul.feedback li.feedback label {
+float:left;
+width:100px;
+font-size: 100%;
+font-weight: bold;
+padding-top: 5px;
+}
+
+input.feedback_form_button {
+font-size: 110%;
+font-weight: bold;
+margin-right: 20px;
+margin-left:120px;
+width: 150px;
+}
+
+
+
+ul.ins_icon li.ins_icon input {
+width: 350px;
+}
+
+ul.ins_icon li.ins_icon label {
+float:left;
+width:150px;
+font-size: 100%;
+font-weight: bold;
+}

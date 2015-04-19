@@ -166,13 +166,32 @@ LOCALE_PATHS = (
 
 CMS_TEMPLATES = (
     # # Customize this
-    ('page.html', 'Main Page'),
-    ('inner.html', 'Inner Page')
+    ('page.html', u'Главная страница'),
+    ('inner.html', u'Внутренняя страница')
 )
 
 CMS_PERMISSION = False
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'content': {
+        'name': u'Содержимое',
+        'plugins': ['TextPlugin'],
+        'default_plugins': [
+            {
+                'plugin_type': 'TextPlugin',
+                'values': {
+                    'body': ''
+                },
+
+            },
+        ]
+    },
+    'right_column': {
+        'name': u'Правая колонка',
+        'plugins': ['LinksPlugin'],
+
+    }
+}
 
 DATABASES = {
     'default':

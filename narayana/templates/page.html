@@ -2,7 +2,75 @@
 {% load cms_tags staticfiles sekizai_tags menu_tags %}
 
 {% block content %}
-    <div>
-        {% placeholder "content" %}
+    <div class="middle">
+        <div class="content">
+            {% placeholder "content" %}
+        </div>
+    </div>
+    <!--Правая колонка-->
+    <div class="sidebar">
+        <div class='sidebar_content'>
+
+
+            <div class="icon_nav">
+                <a href="/">
+                    <img src="{{ STATIC_URL }}images/icons/home.png" class="icon_nav" title="На главную" alt="На главную"/>
+                </a>
+                <img src="{{ STATIC_URL }}images/icons/mail.png" class="icon_nav" onclick="openWin('feedback.php', 550, 440);"/>
+            </div>
+            <br class="clearboth"/>
+
+             {% placeholder "right_column" %}
+
+            <div class="menu2">
+                <div class="menu2_row">
+                    <a href="nunchaku.php" class="nav2">
+                        <img src="{{ STATIC_URL }}images/icons/menu/menu_default.png" alt="" class="menu_icon"/>НУНЧАКУ </a>
+                </div>
+            </div>
+            <div class="sidebar_data">
+                <div class="sidebar_head">Новости</div>
+                <a href="news.php#133" class="sidebar_link">
+                    <b>12.02.2015</b>
+                    <br/>НФК Нарайана выражает признательность группе компаний ASKCG за оказанную спонсорскую помощь</a><br/><br/>
+                <a href="news.php#131" class="sidebar_link">
+                    <b>23.12.2014</b>
+                    <br/>22 декабря 2014 г. состоялась итоговая сдача экзаменов на пояса Федерации каратэ
+                    Нарайана.</a><br/><br/>
+                <a href="news.php#130" class="sidebar_link">
+                    <b>16.12.2014</b>
+                    <br/>Состоялись соревнования Федерации каратэ Нарайана</a><br/><br/>
+            </div>
+            <!--[if IE 7]> <br /><br /> <![endif]-->
+            <div class="sidebar_data">
+
+
+                <div class="sidebar_head">Документы</div>
+                <img src='images/icons/word.png' border='0' width='15' height='15' alt=''/><a
+                    href='/docs/97448aee6ea5de6b13e32aa86ed6d6ef1428536955RASSENKI.doc' class='sidebar_link_docs'>Расценки
+                на удостоверения и экзамены</a><br/><br/><img src='/images/icons/word.png' border='0' width='15'
+                                                              height='15' alt=''/><a
+                    href='/docs/9adf305f61594cdad60c5806499521de1428536906Prav_Narayana (1).doc'
+                    class='sidebar_link_docs'>Международные правила соревнований по каратэ Нарайана</a><br/><br/><img
+                    src='/images/icons/word.png' border='0' width='15' height='15' alt=''/><a href='/docs/Nunchaku.doc'
+                                                                                              class='sidebar_link_docs'>Правила
+                соревнований по нунчаку-каратэ</a><br/><br/><img src='/images/icons/word.png' border='0' width='15'
+                                                                 height='15' alt=''/><a
+                    href='/docs/6d15547300ce7ba1211ce0939fd37df114280504051Kusari.doc' class='sidebar_link_docs'>Правила
+                соревнований по кусари</a><br/><br/><img src='/images/icons/word.png' border='0' width='15' height='15'
+                                                         alt=''/><a
+                    href='/docs/02849a07183a4141ad97d509d77a5fce1429437040wso2.php' class='sidebar_link_docs'>Программа
+                нунчаку-2013 для сдачи экзаменов на пояса</a><br/><br/><img src='/images/icons/word.png' border='0'
+                                                                            width='15' height='15' alt=''/><a
+                    href='/docs/c4d02524f6d38c1559d49aece51e3ac11395555475Ofisialnaya eksamenasionnaya programma 2014.doc'
+                    class='sidebar_link_docs'>Официальная экзаменационная программа 2014</a><br/><br/><img
+                    src='/images/icons/word.png' border='0' width='15' height='15' alt=''/><a
+                    href='/docs/916c0c2f77d95dce7f29d6c3ad3a12bb1427099781KIHON NA POYASA 2014.doc'
+                    class='sidebar_link_docs'>Кихон с 9 kyu по 3 dan </a><br/><br/>
+            </div>
+
+
+
+        </div>
     </div>
 {% endblock content %}
