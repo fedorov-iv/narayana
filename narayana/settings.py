@@ -81,6 +81,11 @@ INSTALLED_APPS = (
     'tinymce',
     'sorl.thumbnail',
     'mce_filebrowser',
+    'djangocms_style',
+    'djangocms_column',
+    'djangocms_link',
+    'djangocms_picture',
+    'djangocms_teaser',
     'easy_thumbnails',
     'captcha',
     'ifcropper',
@@ -188,6 +193,12 @@ CMS_PLACEHOLDER_CONF = {
     },
     'right_column': {
         'name': u'Правая колонка',
+        'plugins': []
+
+
+    },
+    'footer': {
+        'name': u'Нижний колонтитул',
         'plugins': ['LinksPlugin'],
 
     }
