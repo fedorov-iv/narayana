@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, include, url
+#from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.contrib import admin
 from cms.sitemaps import CMSSitemap
 from django.utils.functional import curry
 from django.views.defaults import server_error, page_not_found, permission_denied
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 
 admin.autodiscover()
 
@@ -20,11 +21,4 @@ urlpatterns = patterns('',
                        url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
                            {'sitemaps': {'cmspages': CMSSitemap}}),
                        url(r'^', include('cms.urls')),
-)
-
-# This is only needed when using runserver.
-if settings.DEBUG:
-    urlpatterns = patterns('',
-                           url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-                               {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    ) + staticfiles_urlpatterns() + urlpatterns
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

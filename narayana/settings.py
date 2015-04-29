@@ -193,13 +193,13 @@ CMS_PLACEHOLDER_CONF = {
     },
     'right_column': {
         'name': u'Правая колонка',
-        'plugins': []
-
+        'plugins': ['MainPageNewsPlugin'],
 
     },
     'footer': {
         'name': u'Нижний колонтитул',
         'plugins': ['LinksPlugin'],
+
 
     }
 }
