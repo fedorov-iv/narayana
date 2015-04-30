@@ -27,23 +27,7 @@ table.video_list, .menu2, .sidebar_data, .img_test, div.pview_nav {
 a div p span {
     font-family:Arial,Tahoma,Helvetica,Verdana,sans-serif;
 }
-a {
-    text-decoration:none;
-}
-img {
-    border:0px;
-}
-/*
-div {
-    position: relative;
-}
-*/
-form {
-    margin-bottom:0;
-}
-table {
-    margin: 0 auto;
-}
+
 
 .main_block {
     background-color:#ecf6de;   

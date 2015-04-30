@@ -1,27 +1,18 @@
 {% load cms_tags static %}
-{% load media_tags %}
-{% load thumbnail %}
-{% load cropping %}
 {% load i18n %}
 
-<div id="mainpage-news">
-    <div class="block">
-        <h1>{% trans "News" %}</h1>
-        <div class="news">
-            {% for news in news_list %}
-                <a class="news__block" href="/about/news/{{ news.id }}/">
+
+<div class="sidebar_data">
+                <div class="sidebar_head">Новости</div>
+
+                {% for news in news_list %}
+
+                    <a href="{% page_id_url "news" %}{{ news.id }}/" class="sidebar_link">
                     {% if news.create_date %}
-                        <div class="news__date">{{ news.create_date|date:"d.m.Y" }}</div>
+                        <b>{{ news.create_date|date:"d.m.Y" }}</b><br/>
                     {% endif %}
-                    {% if news.image %}
-                        {% thumbnail news.image '100x100' crop="center" as im %}
-                            <div class="news__image"><img class="" src="{{ im.url }}"/></div>
-                        {% endthumbnail %}
-                    {% endif %}
-                    <div class="news__excerpt">{{news.announce|truncatechars:160 }}</div>
-                </a>
-            {% endfor %}
-        </div>
-        <div class="news__all"><a href="/about/news/" class="btn">{% trans "All news" %}</a></div>
-    </div>
-</div>
+                    {{news.announce|truncatechars:160 }}</a><br/><br/>
+
+                {% endfor %}
+ </div>
+
